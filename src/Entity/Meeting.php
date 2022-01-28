@@ -50,9 +50,14 @@ class Meeting
     private $subject;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="meeting")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="meeting", cascade={"persist", "remove"})
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isActive;
 
     public function __construct()
     {
@@ -162,6 +167,18 @@ class Meeting
                 $comment->setMeeting(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(?bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

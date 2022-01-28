@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PageController!{% endblock %}
+
+{% block body %}
+
+    {% for session in sessions %}
+        <h2 class = "ml-2">
+            <a href = "{{ path('session_show', {session: session.id}) }}">
+                {{ session.name }}
+            </a>
+        </h2>
+        {% for subject in session.subjects %}
+            <p class = "ml-4">
+                <a href = "{{ path('subject_show', {subject: subject.id}) }}">
+                    {{ subject.teacherLastName }} - {{ subject.name }}
+                </a>
+            </p>
+        {% endfor %}
+    {% endfor %}
+
+    <br><br><br><br>
+
+    <a class = "btn btn-info" href = "{{ path('session_create') }}">Создать сессию</a>
+
+    <br><br><br><br>
+
+    <h2>Активные встречи</h2>
+
+    {% for meeting in activeMeeting %}
+        <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
+            {{ meeting.subject.teacherLastName }} - {{ meeting.subject.name }} : {{ meeting.dateMeeting|date("d-m") }} {{ meeting.timeMeeting|date("H-m") }}
+        </a>
+        <br>
+    {% endfor %}
+
+{% endblock %}

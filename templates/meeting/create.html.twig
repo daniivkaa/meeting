@@ -9,10 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h2>Встречи</h2>
-
-    {% for meeting in meetings %}
-        <p>{{ meeting.dateMeeting|date('d-m') }}</p>
-    {% endfor %}
+    <h2>Создать встречу</h2>
+    {{ form_start(meetingForm) }}
+    {{ form_row(meetingForm.dateMeeting) }}
+    {{ form_row(meetingForm.timeMeeting) }}
+    <button type="submit" class="btn btn-primary">Создать встречу</button>
+    {{ form_end(meetingForm) }}
 </div>
 {% endblock %}

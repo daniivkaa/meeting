@@ -44,11 +44,33 @@ class SessionController extends AbstractController
             $em->persist($session);
             $em->flush();
 
-            return $this->redirectToRoute('session');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('session/create.html.twig', [
             'sessionForm' => $sessionForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/session/show/{session}", name="session_show")
+     */
+    public function sessionShow(Session $session, EntityManagerInterface $em): Response
+    {
+
+        return $this->render('session/show.html.twig', [
+            'session' => $session,
+        ]);
+    }
+
+    /**
+     * @Route("/session/delete/{session}", name="session_delete")
+     */
+    public function sessionDelete(Session $session, EntityManagerInterface $em): Response
+    {
+        $em->remove($session);
+        $em->flush();
+
+        return $this->redirectToRoute('home');
     }
 }

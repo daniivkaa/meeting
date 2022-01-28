@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SubjectController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h2>{{ subject.name }}</h2>
+    <p>ФИО: {{ subject.teacherLastName }} {{ subject.teacherFirstName }} {{ subject.teacherPatronymic }}</p>
+    <hr>
+    <a class = "btn btn-info" href = "{{ path('meeting_create', {subject: subject.id}) }}">
+        Создать встречу
+    </a>
+    <a class = "btn btn-info" href = "{{ path('session_show', {session: subject.session.id}) }}">Вернуться</a>
+    <a class = "btn btn-info" href = "{{ path('home') }}">Домой</a>
+    <a class = "btn btn-danger" href = "{{ path('subject_delete', {subject: subject.id}) }}">Удаить предмет</a>
+    <br><br><br><br><br>
+
+
+    <h2>Активные встречи</h2>
+
+    {% for meeting in activeMeeting %}
+        <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
+            {{ meeting.dateMeeting|date("d-m") }} {{ meeting.timeMeeting|date("H-m") }}
+        </a>
+        <br>
+    {% endfor %}
+
+    <br><br><br><br><br>
+
+    <h2>История встреч</h2>
+
+    {% for meeting in historyMeeting %}
+        <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
+            {{ meeting.dateMeeting|date("d-m") }} {{ meeting.timeMeeting|date("H-m") }}
+        </a>
+        <br>
+    {% endfor %}
+
+
+</div>
+{% endblock %}

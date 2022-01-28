@@ -30,7 +30,7 @@ class Session
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Subject::class, mappedBy="session")
+     * @ORM\OneToMany(targetEntity=Subject::class, mappedBy="session", cascade={"persist", "remove"})
      */
     private $subjects;
 

@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $patronymic;
 
     /**
-     * @ORM\OneToMany(targetEntity=Session::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Session::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private $sessions;
 

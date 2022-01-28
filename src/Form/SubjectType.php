@@ -13,10 +13,9 @@ class SubjectType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('teacherÐerFirstName')
+            ->add('teacherFirstName')
             ->add('teacherLastName')
             ->add('teacherPatronymic')
-            ->add('session')
         ;
     }
 

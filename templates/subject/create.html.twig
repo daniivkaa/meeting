@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SubjectController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h2>Добавить предмет</h2>
+    {{ form_start(subjectForm) }}
+    {{ form_row(subjectForm.name) }}
+    {{ form_row(subjectForm.teacherFirstName) }}
+    {{ form_row(subjectForm.teacherLastName) }}
+    {{ form_row(subjectForm.teacherPatronymic) }}
+    <button type="submit" class="btn btn-primary">Добавить предмет</button>
+    {{ form_end(subjectForm) }}
+</div>
+{% endblock %}

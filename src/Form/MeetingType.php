@@ -14,10 +14,6 @@ class MeetingType extends AbstractType
         $builder
             ->add('dateMeeting')
             ->add('timeMeeting')
-            ->add('arrivalTime')
-            ->add('startTime')
-            ->add('isSuccessful')
-            ->add('subject')
         ;
     }
 

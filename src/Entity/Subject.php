@@ -27,7 +27,7 @@ class Subject
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $teacherÐerFirstName;
+    private $teacherFirstName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -45,7 +45,7 @@ class Subject
     private $session;
 
     /**
-     * @ORM\OneToMany(targetEntity=Meeting::class, mappedBy="subject")
+     * @ORM\OneToMany(targetEntity=Meeting::class, mappedBy="subject", cascade={"persist", "remove"})
      */
     private $meetings;
 
@@ -71,14 +71,14 @@ class Subject
         return $this;
     }
 
-    public function getTeacherÐerFirstName(): ?string
+    public function getTeacherFirstName(): ?string
     {
-        return $this->teacherÐerFirstName;
+        return $this->teacherFirstName;
     }
 
-    public function setTeacherÐerFirstName(string $teacherÐerFirstName): self
+    public function setTeacherFirstName(string $teacherFirstName): self
     {
-        $this->teacherÐerFirstName = $teacherÐerFirstName;
+        $this->teacherFirstName = $teacherFirstName;
 
         return $this;
     }
