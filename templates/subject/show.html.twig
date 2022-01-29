@@ -27,6 +27,7 @@
         <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
             {{ meeting.dateMeeting|date("d-m") }} {{ meeting.timeMeeting|date("H-m") }}
         </a>
+        <p>{{ meeting.state }}</p>
         <br>
     {% endfor %}
 
@@ -38,6 +39,7 @@
         <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
             {{ meeting.dateMeeting|date("d-m") }} {{ meeting.timeMeeting|date("H-m") }}
         </a>
+        <p>{{ meeting.state }}</p>
         <br>
     {% endfor %}
 

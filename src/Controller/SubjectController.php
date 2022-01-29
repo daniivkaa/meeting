@@ -59,8 +59,8 @@ class SubjectController extends AbstractController
     public function subjectShow(Subject $subject, EntityManagerInterface $em): Response
     {
 
-        $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true, "subject" => $subject]);
-        $historyMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => false, "subject" => $subject]);
+        $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true, "subject" => $subject], ['date' => 'DESC']);
+        $historyMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => false, "subject" => $subject], ['date' => 'DESC']);
 
         return $this->render('subject/show.html.twig', [
             'subject' => $subject,

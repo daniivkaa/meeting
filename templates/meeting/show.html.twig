@@ -11,9 +11,31 @@
 <div class="example-wrapper">
     <h2>Встреча</h2>
 
+        <p>Дата создания встречи: {{ meeting.date|date('d-m-Y') }}</p>
         <p>{{ meeting.subject.name }}</p>
-        <p>{{ meeting.dateMeeting|date('d-m') }}</p>
-        <p>{{ meeting.timeMeeting|date('H:i') }}</p>
+        <p>Назначена на дату: {{ meeting.dateMeeting|date('d-m') }}</p>
+        <p>Назначена на время: {{ meeting.timeMeeting|date('H:i') }}</p>
+        {% if meeting.arrivalTime %}
+            <p>Я пришел: {{ meeting.arrivalTime|date('H:i') }}</p>
+        {% endif %}
+        {% if meeting.startTime %}
+            <p>Начало встречи: {{ meeting.startTime|date('H:i') }}</p>
+        {% endif %}
+
+    <br><br><br><br>
+
+    {% if meeting.isActive %}
+        {{ form_start(meetingEditForm) }}
+            {{ form_row(meetingEditForm.arrivalTime) }}
+            {{ form_row(meetingEditForm.startTime) }}
+            <button type="submit" class="btn btn-primary">Обновить встречу</button>
+        {{ form_end(meetingEditForm) }}
+        <br><br>
+
+        <a class = "btn btn-info" href = "{{ path('meeting_end_successful', {meeting: meeting.id}) }}">Встреча состоялась</a>
+        <a class = "btn btn-info" href = "{{ path('meeting_end_unsuccessful', {meeting: meeting.id}) }}">Встреча не состоялась</a>
+        <a class = "btn btn-danger" href = "{{ path('meeting_delete', {meeting: meeting.id}) }}">Удалить встречу</a>
+    {% endif %}
 
     <h2>Комментарии</h2>
 

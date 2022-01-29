@@ -18,7 +18,7 @@ class PageController extends AbstractController
     {
         $sessions = $em->getRepository(Session::class)->findAll();
 
-        $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true]);
+        $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true], ['date' => 'DESC']);
 
 
         return $this->render('page/index.html.twig', [
