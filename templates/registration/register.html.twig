@@ -1,17 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'baselogreg.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
+<main class = "main-login">
+    <div class = "form-login">
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="title-login">
+            <h1>Регистрация</h1>
+            <hr>
+        </div>
+        {% if errors %}
+            {% for error in errors %}
+                <div class="error_msg">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class = "field-login">
+            {{ form_row(registrationForm.email) }}
+        </div>
+        <div class = "field-login">
+            {{ form_row(registrationForm.firstName) }}
+        </div>
+        <div class = "field-login">
+            {{ form_row(registrationForm.lastName) }}
+        </div>
+        <div class = "field-login">
+            {{ form_row(registrationForm.patronymic) }}
+        </div>
+        <div class = "field-login">
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Пароль'
+            }) }}
+        </div>
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="button-login">Регистрация</button>
+
+        <hr>
+
+        <div class = "help-block">
+            <span>Уже зарегестрированны? </span>
+            <a href = "{{ path('app_login') }}">Войти в систему</a>
+        </div>
     {{ form_end(registrationForm) }}
+    </div>
+</main>
 {% endblock %}

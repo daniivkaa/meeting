@@ -1,0 +1,93 @@
+.main-login{
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+  & .form-login{
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  & .title-login{
+    margin-bottom: 20px;
+
+    & h1{
+      font-size: 26px;
+      font-weight: 700;
+      color: #000;
+      text-align: center;
+    }
+  }
+
+  & .field-login{
+
+    margin-bottom: 10px;
+
+    & label{
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    & input{
+      box-sizing: border-box;
+      font-size: 13px;
+      font-weight: 400;
+      width: 100%;
+      padding: 0.75em 1em;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  }
+
+  & .button-login{
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    height: auto;
+    width: 100%;
+    font-size: 13px !important;
+    font-weight: 700;
+    padding: 9px 12px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #db4c3f;
+    color: #fff !important;
+    border: none;
+  }
+
+  & .remember-me label{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 1em;
+  }
+
+  & .help-block{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+
+    & a{
+      color: #dd4b39;
+    }
+  }
+
+  & .error_msg{
+    display: flex;
+    align-items: center;
+    color: #dd4b39;
+    padding: 0.5em 0;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}

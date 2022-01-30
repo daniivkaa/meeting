@@ -43,9 +43,14 @@ class RegistrationController extends AbstractController
                 $request
             );
         }
+        $errors = [];
+        foreach($form->getErrors() as $error){
+            $errors[] = $error->getMessage();
+        }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'errors' => $errors
         ]);
     }
 }
