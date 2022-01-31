@@ -9,20 +9,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PageController extends AbstractController
+class PageController extends MainController
 {
     /**
      * @Route("/", name="home")
      */
     public function index(EntityManagerInterface $em): Response
     {
-        $sessions = $em->getRepository(Session::class)->findAll();
 
         $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true], ['date' => 'DESC']);
 
 
-        return $this->render('page/index.html.twig', [
-            'sessions' => $sessions,
+        return $this->renderPage('page/index.html.twig', [
             'activeMeeting' => $activeMeeting
         ]);
     }

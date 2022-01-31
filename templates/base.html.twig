@@ -34,9 +34,11 @@
                             <img src = "{{ asset('/img/arrow.svg') }}">
                             <span>{{ session.name }}</span>
                         </div>
-                        <div class = "plus">
-                            <a href = "{{ path('subject_create', {session: session.id}) }}"><img src = "{{ asset('/img/plus.svg') }}"></a>
-                        </div>
+                        <a href = "{{ path('subject_create', {session: session.id}) }}">
+                            <div class = "plus">
+                                <img src = "{{ asset('/img/plus.svg') }}">
+                            </div>
+                        </a>
                     </div>
                     <ul class = "subject-list">
                         {% for subject in session.subjects %}

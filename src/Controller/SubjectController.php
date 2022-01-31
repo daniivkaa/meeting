@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SubjectController extends AbstractController
+class SubjectController extends MainController
 {
     /**
      * @Route("/subject/{session}", name="subject")
@@ -23,7 +23,7 @@ class SubjectController extends AbstractController
             "session" => $session
         ]);
 
-        return $this->render('subject/index.html.twig', [
+        return $this->renderPage('subject/index.html.twig', [
             'subjects' => $subjects,
         ]);
     }
@@ -48,7 +48,7 @@ class SubjectController extends AbstractController
             return $this->redirectToRoute("session_show", ['session' => $session->getId()]);
         }
 
-        return $this->render('subject/create.html.twig', [
+        return $this->renderPage('subject/create.html.twig', [
             'subjectForm' => $subjectForm->createView(),
         ]);
     }
@@ -62,7 +62,7 @@ class SubjectController extends AbstractController
         $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true, "subject" => $subject], ['date' => 'DESC']);
         $historyMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => false, "subject" => $subject], ['date' => 'DESC']);
 
-        return $this->render('subject/show.html.twig', [
+        return $this->renderPage('subject/show.html.twig', [
             'subject' => $subject,
             'activeMeeting' => $activeMeeting,
             'historyMeeting' => $historyMeeting

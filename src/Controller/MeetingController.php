@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MeetingController extends AbstractController
+class MeetingController extends MainController
 {
     /**
      * @Route("/meeting/{subject}", name="meeting")
@@ -23,7 +23,7 @@ class MeetingController extends AbstractController
             "subject" => $subject
         ]);
 
-        return $this->render('meeting/index.html.twig', [
+        return $this->renderPage('meeting/index.html.twig', [
             'meetings' => $meetings,
         ]);
     }
@@ -50,7 +50,7 @@ class MeetingController extends AbstractController
             return $this->redirectToRoute("home");
         }
 
-        return $this->render('meeting/create.html.twig', [
+        return $this->renderPage('meeting/create.html.twig', [
             'meetingForm' => $meetingForm->createView(),
         ]);
     }
@@ -70,7 +70,7 @@ class MeetingController extends AbstractController
             $em->flush();
         }
 
-        return $this->render('meeting/show.html.twig', [
+        return $this->renderPage('meeting/show.html.twig', [
             'meeting' => $meeting,
             'meetingEditForm' => $meetingEditForm->createView()
         ]);

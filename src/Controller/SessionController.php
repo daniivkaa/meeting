@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SessionController extends AbstractController
+class SessionController extends MainController
 {
     /**
      * @Route("/session", name="session")
@@ -23,7 +23,7 @@ class SessionController extends AbstractController
             'user' => $user
         ]);
 
-        return $this->render('session/index.html.twig', [
+        return $this->renderPage('session/index.html.twig', [
             'sessions' => $sessions,
         ]);
     }
@@ -47,7 +47,7 @@ class SessionController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('session/create.html.twig', [
+        return $this->renderPage('session/create.html.twig', [
             'sessionForm' => $sessionForm->createView(),
         ]);
     }
@@ -58,7 +58,7 @@ class SessionController extends AbstractController
     public function sessionShow(Session $session, EntityManagerInterface $em): Response
     {
 
-        return $this->render('session/show.html.twig', [
+        return $this->renderPage('session/show.html.twig', [
             'session' => $session,
         ]);
     }
