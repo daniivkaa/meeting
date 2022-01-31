@@ -25,6 +25,39 @@
             <a href = "{{ path('app_logout') }}">Выйти</a>
         </div>
     </header>
-        {% block body %}{% endblock %}
+    <main class = "main">
+        <section class = "main-sidebar">
+            <nav>
+                {% for session in sessions %}
+                    <div class = "sidebar-session">
+                        <div>
+                            <img src = "{{ asset('/img/arrow.svg') }}">
+                            <span>{{ session.name }}</span>
+                        </div>
+                        <div class = "plus">
+                            <a href = "{{ path('subject_create', {session: session.id}) }}"><img src = "{{ asset('/img/plus.svg') }}"></a>
+                        </div>
+                    </div>
+                    <ul class = "subject-list">
+                        {% for subject in session.subjects %}
+                            <a href = "{{ path('subject_show', {subject: subject.id}) }}">
+                                <li>
+                                    {{ subject.teacherLastName }} - {{ subject.name }}
+                                </li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+
+                <a href = "{{ path('session_create') }}">
+                    <div class = "new-session">
+                        <img src = "{{ asset('/img/plus.svg') }}">
+                        <span>Новая сессия</span>
+                    </div>
+                </a>
+            </nav>
+        </section>
+        <section class = "main-body">{% block body %}{% endblock %}</section>
+    </main>
     </body>
 </html>
