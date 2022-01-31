@@ -1,2 +1,54 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'logreg.scss';
+
+.main-header{
+  width: 100%;
+  height: 44px;
+  padding-left: 42px;
+  padding-right: 42px;
+  background-color: #db4c3f;
+  display: flex;
+  align-items: center;
+  z-index: 200;
+  justify-content: center;
+  flex-shrink: 0;
+
+  & .header-buttons{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    & .header-img{
+      margin-right: 10px;
+      width: 28px;
+      height: 28px;
+
+      &:hover{
+        border-radius: 5px;
+        background-color: hsla(0,0%,100%,.2);
+      }
+    }
+  }
+
+  & .header-logout{
+    flex-grow: 1;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 600;
+    font-size: 15px;
+
+    & a{
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 5px 5px;
+
+      &:hover{
+        border-radius: 5px;
+        background-color: hsla(0,0%,100%,.2);
+      }
+    }
+  }
+}
