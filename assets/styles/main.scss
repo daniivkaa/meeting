@@ -1,16 +1,16 @@
-.main{
+.main {
   display: flex;
   justify-content: center;
 
-  & a{
+  & a {
     text-decoration: none;
   }
 
-  & nav{
+  & nav {
     flex-grow: 1;
   }
 
-  & .main-sidebar{
+  & .main-sidebar {
     display: flex;
     justify-content: flex-start;
     width: 400px;
@@ -18,17 +18,17 @@
     padding-left: 35px;
     padding-right: 35px;
 
-    & .sidebar-session{
+    & .sidebar-session {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      & img{
+      & img {
 
       }
 
-      & span{
+      & span {
         text-align: left;
         font-size: 16px;
         color: #333;
@@ -38,20 +38,20 @@
     }
   }
 
-  & .main-body{
+  & .main-body {
     flex-grow: 1;
   }
 
-  & .plus{
+  & .plus {
     padding: 5px 10px;
     cursor: pointer;
 
-    & img{
+    & img {
       width: 14px;
       height: 14px;
     }
 
-    &:hover{
+    &:hover {
       border-radius: 5px;
       background-color: #eee;
     }
@@ -60,42 +60,60 @@
   & .subject-list {
     padding-left: 0;
 
-    & li{
+    & li {
       list-style-type: none;
       margin-top: 10px;
       color: #333;
       font-size: 14px;
       padding: 10px 15px;
 
-      &:hover{
+      &:hover {
         border-radius: 5px;
         background-color: #eee;
       }
     }
 
-    & a{
+    & a {
       color: #333;
       font-size: 14px;
     }
   }
 
-  & .new-session{
+  & .new-session {
     margin-top: 80px;
     padding: 10px 15px;
 
-    & img{
+    & img {
       width: 14px;
       height: 14px;
     }
 
-    & span{
+    & span {
       font-size: 14px;
       color: #333;
       font-weight: 700;
       margin: 20px;
     }
 
-    &:hover{
+    &:hover {
+      border-radius: 5px;
+      background-color: #eee;
+    }
+  }
+
+  & .sidebar-home {
+    margin-bottom: 30px;
+    padding: 10px 0px;
+    align-items: center;
+
+    & span {
+      font-size: 14px;
+      color: #202020;
+      font-weight: 700;
+      margin: 5px;
+    }
+
+    &:hover {
       border-radius: 5px;
       background-color: #eee;
     }

@@ -28,6 +28,12 @@
     <main class = "main">
         <section class = "main-sidebar">
             <nav>
+                <a href = "{{ path('home') }}">
+                    <div class = "sidebar-home">
+                        <img src = "{{ asset('/img/home_black.svg') }}">
+                        <span>Главная</span>
+                    </div>
+                </a>
                 {% for session in sessions %}
                     <div class = "sidebar-session">
                         <div>
@@ -61,5 +67,55 @@
         </section>
         <section class = "main-body">{% block body %}{% endblock %}</section>
     </main>
+
+    <div class = "form-background hidden">
+        <div class = "form">
+            {{ form_start(sessionForm) }}
+                <header>
+                    <h2>Добавить сессию</h2>
+                </header>
+                <section class = "section-input">
+                    <div class = "field-form">
+                        {{ form_row(sessionForm.name) }}
+                    </div>
+                </section>
+                <footer class = "footer-button">
+                    <button type="button">Отмена</button>
+                    <button type="submit" class="red disabled">Добавить</button>
+                </footer>
+            {{ form_end(sessionForm) }}
+        </div>
+    </div>
+
+    <div class = "form-background hidden">
+        <div class = "form">
+            {{ form_start(subjectForm) }}
+            <header>
+                <h2>Добавить предмет</h2>
+            </header>
+            <section class = "section-input">
+                <div class = "field-form">
+                    {{ form_row(subjectForm.name) }}
+                </div>
+                <div class = "field-form">
+                    {{ form_row(subjectForm.teacherFirstName) }}
+                </div>
+                <div class = "field-form">
+                    {{ form_row(subjectForm.teacherLastName) }}
+                </div>
+                <div class = "field-form">
+                    {{ form_row(subjectForm.teacherPatronymic) }}
+                </div>
+                <div class = "field-hidden">
+                    {{ form_row(subjectForm.sessionId) }}
+                </div>
+            </section>
+            <footer class = "footer-button">
+                <button type="button">Отмена</button>
+                <button type="submit" class="red disabled">Добавить</button>
+            </footer>
+            {{ form_end(subjectForm) }}
+        </div>
+    </div>
     </body>
 </html>

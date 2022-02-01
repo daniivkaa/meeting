@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Subject;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,10 +14,22 @@ class SubjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('teacherFirstName')
-            ->add('teacherLastName')
-            ->add('teacherPatronymic')
+            ->add('name', TextType::class, [
+                'label' => "Название предмета"
+            ])
+            ->add('teacherFirstName', TextType::class, [
+                'label' => "Имя преподавателя"
+            ])
+            ->add('teacherLastName', TextType::class, [
+                'label' => "Фамилия преподавателя"
+            ])
+            ->add('teacherPatronymic', TextType::class, [
+                'label' => "Отчество преподавателя"
+            ])
+            ->add('sessionId', HiddenType::class, [
+                'data' => "7",
+                "mapped" => false
+            ])
         ;
     }
 
