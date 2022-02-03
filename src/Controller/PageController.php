@@ -17,7 +17,7 @@ class PageController extends MainController
     public function index(EntityManagerInterface $em): Response
     {
 
-        $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true], ['date' => 'DESC']);
+        $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true], ['dateMeeting' => 'ASC']);
 
 
         return $this->renderPage('page/index.html.twig', [

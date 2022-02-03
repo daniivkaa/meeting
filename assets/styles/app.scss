@@ -2,6 +2,7 @@
 @import 'logreg.scss';
 @import 'main.scss';
 @import 'form.scss';
+@import 'active_meeting.scss';
 
 .main-header{
   width: 100%;
@@ -53,4 +54,11 @@
       }
     }
   }
+}
+
+.title{
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 30px;
 }

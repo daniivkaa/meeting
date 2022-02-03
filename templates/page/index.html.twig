@@ -3,15 +3,39 @@
 {% block title %}Hello PageController!{% endblock %}
 
 {% block body %}
+    <header class = "title">
+        <h2>Активные встречи</h2>
+    </header>
+    <div class = "meetings">
+        {% for meeting in activeMeeting %}
+            <div class = "meeting">
+                <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
+                    <div>
+                        <header class = "title-meeting">
+                            <section class = "meeting-subject">
+                                <h3>{{ meeting.subject.teacherLastName }} - {{ meeting.subject.name }}</h3>
+                            </section>
+                            <span class = "state state-active">{{ meeting.state }}</span>
+                        </header>
 
-    <h2>Активные встречи</h2>
+                        <hr>
 
-    {% for meeting in activeMeeting %}
-        <a href = "{{ path('meeting_show', {meeting: meeting.id}) }}">
-            {{ meeting.subject.teacherLastName }} - {{ meeting.subject.name }} : {{ meeting.dateMeeting|date("d-m") }} {{ meeting.timeMeeting|date("H-m") }}
-        </a>
-        <p>{{ meeting.state }}</p>
-        <br>
-    {% endfor %}
+                        <section class = "meeting-info">
+                            <span class = "time">Дата встречи: {{ meeting.dateMeeting|format_date('full', 'd MMMM', null, 'gregorian', 'ru') }}</span>
+                            <span class = "time">Время встречи: {{ meeting.timeMeeting|localizeddate('none', 'short', 'ru') }}</span>
+                        </section>
+
+                        <hr>
+
+                        <footer>
+                            <span>
+                                Дата создания: {{ meeting.date|date("d.m.Y") }}
+                            </span>
+                        </footer>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

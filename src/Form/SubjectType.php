@@ -27,7 +27,7 @@ class SubjectType extends AbstractType
                 'label' => "Отчество преподавателя"
             ])
             ->add('sessionId', HiddenType::class, [
-                'data' => "7",
+                'data' => "1",
                 "mapped" => false
             ])
         ;
