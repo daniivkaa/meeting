@@ -7,21 +7,39 @@
         <h2>{{ subject.name }}</h2>
     </header>
 
-<div class="example-wrapper">
-    <h2>{{ subject.name }}</h2>
-    <p>ФИО: {{ subject.teacherLastName }} {{ subject.teacherFirstName }} {{ subject.teacherPatronymic }}</p>
-    <hr>
-    <a class = "btn btn-info" href = "{{ path('meeting_create', {subject: subject.id}) }}">
-        Создать встречу
-    </a>
-    <a class = "btn btn-info" href = "{{ path('session_show', {session: subject.session.id}) }}">Вернуться</a>
-    <a class = "btn btn-info" href = "{{ path('home') }}">Домой</a>
-    <a class = "btn btn-danger" href = "{{ path('subject_delete', {subject: subject.id}) }}">Удаить предмет</a>
-    <br><br><br><br><br>
+    <div class = "subject-main">
+        <header>
+            <h2>Преподаватель</h2>
+            <a href = "{{ path('subject_delete', {subject: subject.id}) }}">
+                <div class = "delete-subject">
+                    <img src = "{{ asset('/img/plus.svg') }}">
+                    <span>Удалить предмет</span>
+                </div>
+            </a>
+        </header>
+        <div class = "fio">
+            <div>
+                <span class = "label">Фамилия:</span>
+                <span class = "teacher-fio">{{ subject.teacherLastName }}</span>
+            </div>
+            <div>
+                <span class = "label">Имя:</span>
+                <span class = "teacher-fio">{{ subject.teacherFirstName }}</span>
+            </div>
+            <div>
+                <span class = "label">Отчество:</span>
+                <span class = "teacher-fio">{{ subject.teacherPatronymic }}</span>
+            </div>
+        </div>
+    </div>
 
 
-    <header class = "title">
+    <header class = "title-active-meeting">
         <h2>Активные встречи</h2>
+        <div class = "new-meeting">
+            <img src = "{{ asset('/img/plus.svg') }}">
+            <span>Новая встреча</span>
+        </div>
     </header>
 
     <div class = "meetings">
@@ -56,5 +74,26 @@
         {% endfor %}
     </div>
 
-</div>
+    <div class = "form-background">
+        <div class = "form">
+            {{ form_start(meetingForm) }}
+            <header>
+                <h2>Создать встречу</h2>
+            </header>
+            <section class = "section-input">
+                <div class = "field-form">
+                    {{ form_row(meetingForm.dateMeeting) }}
+                </div>
+                <div class = "field-form">
+                    {{ form_row(meetingForm.timeMeeting) }}
+                </div>
+            </section>
+            <footer class = "footer-button">
+                <button type="button">Отмена</button>
+                <button type="submit" class="red disabled">Создать</button>
+            </footer>
+            {{ form_end(meetingForm) }}
+        </div>
+    </div>
+
 {% endblock %}

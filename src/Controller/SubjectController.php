@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Meeting;
 use App\Entity\Session;
 use App\Entity\Subject;
+use App\Form\MeetingType;
 use App\Form\SubjectType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,16 +57,35 @@ class SubjectController extends MainController
     /**
      * @Route("/subject/show/{subject}", name="subject_show")
      */
-    public function subjectShow(Subject $subject, EntityManagerInterface $em): Response
+    public function subjectShow(Subject $subject, EntityManagerInterface $em, Request $request): Response
     {
 
         $activeMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => true, "subject" => $subject], ['date' => 'DESC']);
         $historyMeeting = $em->getRepository(Meeting::class)->findBy(['isActive' => false, "subject" => $subject], ['date' => 'DESC']);
 
+        $meeting = new Meeting();
+
+        $meetingForm = $this->createForm(MeetingType::class, $meeting);
+        $meetingForm->handleRequest($request);
+
+        if($meetingForm->isSubmitted() && $meetingForm->isValid()){
+            $meeting->setSubject($subject);
+            $meeting->setIsActive(true);
+            $meeting->setState("Активна");
+            $meeting->setDate(new \DateTime('now'));
+
+            $em->persist($meeting);
+            $em->flush();
+
+            return $this->redirectToRoute("subject_show", ['subject' => $subject->getId()]);
+        }
+
+
         return $this->renderPage('subject/show.html.twig', [
             'subject' => $subject,
             'activeMeeting' => $activeMeeting,
-            'historyMeeting' => $historyMeeting
+            'historyMeeting' => $historyMeeting,
+            'meetingForm' => $meetingForm->createView(),
         ]);
     }
 

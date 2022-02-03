@@ -1,0 +1,111 @@
+.title-active-meeting{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 15px;
+  width: 100%;
+
+  & h2{
+    font-weight: 700;
+    font-size: 16px;
+    color: #202020;
+  }
+
+  & .new-meeting{
+    padding: 10px 10px;
+    cursor: pointer;
+
+    & img {
+      width: 14px;
+      height: 14px;
+    }
+
+    & span {
+      font-size: 14px;
+      color: #333;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+
+    &:hover {
+      border-radius: 5px;
+      background-color: #eee;
+    }
+  }
+}
+
+.subject-main{
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0px 10px;
+
+  &.fio{
+
+  }
+
+  & a{
+
+  }
+
+  & header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+
+    & h2{
+      font-weight: 700;
+      font-size: 16px;
+      color: #202020;
+      border-radius: 5px;
+    }
+
+    & .delete-subject{
+      padding: 10px 10px;
+      background-color: #db4c3f;
+      opacity: 0.6;
+      border-radius: 5px;
+
+      & img {
+        width: 14px;
+        height: 14px;
+      }
+
+      & span {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 700;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    & a{
+      text-decoration: none;
+      color: #333;
+    }
+  }
+
+  & .fio{
+
+    & div{
+      margin-bottom: 10px;
+
+      & .label{
+        font-size: 13px;
+        color: #333;
+        font-weight: 700;
+      }
+
+      & .teacher-fio{
+
+      }
+    }
+  }
+}
